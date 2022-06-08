@@ -16,9 +16,12 @@ UWAGA: Po skompilowaniu programu według stanu ze wszystkich commitów, z uwagi 
 		Code2: główny cel makefile'a. Kompiluje cały program, tworząc z niego plik wykonywalny. Wymaga pliku obiektowego main.o oraz obu bibliotek: libarea.a oraz libvolume.so
 		remove: sztuczny cel, którego zadaniem jest usunięcie plików - śmieci, które powstały podczas instalacji programu. Są to: main.o, area.o oraz volume.o. W celu usunięcia plików posłużono się poleceniem rm.
 		
-		Commit 3: Zmienne automatyczne
+	Commit 3: Zmienne automatyczne
 		Istniejący już plik makefile zmodyfikowano tak, by realizował powierzone mu działanie za pomocą zmiennych automatycznych, takich jak:
 			$@ - odwołuje się do pliku - celu
 			$^ - zwraca listę zależności. Zależności są pooddzielane spacjami, nie zawierają powtórzeń tego samego pliku
 			$* - zwraca nazwę pliku - celu, jednak pozbawioną rozszerzenia (tzn. jeżeli cel nazywa się main.o, to $* zwróci "main")
 			
+	Commit 4: Reguły przyrostków
+		Istniejący makefile rozbudowano o dwie reguły przyrostków: pierwsza, .o, ma za zadanie kompilowanie programu z plików obiektowych. Druga, .c.o tworzy pliki obiektowe wprost z kodu źródłowego. Regłu przyrostków mają swoje wady, głównie - są one mało precyzyjne. W związku z tym w piątym commicie uzupełniono plik makefile o reguły wzorców.
+		
