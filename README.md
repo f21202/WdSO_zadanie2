@@ -3,7 +3,9 @@ Autor: Filip Mikołaj Uliasz, nr albumu 97758
 UWAGA: Po skompilowaniu programu według stanu ze wszystkich commitów, z uwagi na wykorzystanie biblioteki współdzielonej, należy wydać w terminalu polecenie:
 	export LD_LIBRARY_PATH=$(pwd)
 	którego zadaniem jest wskazanie linkerowi, gdzie powinien szukać biblioteki niezbędnej do prawidłowego działania programu. Polecenie to wystarczy wydać tylko raz, przed pierwszym uruchomieniem programu. Ścieżka zostanie zapisana w tej zmiennej systemowej aż do momentu ponownego uruchomienia maszyny.
-	
+
+UWAGA2: Z zupełnie nieznanego mi powodu (ze 100% pewnością twierdzę, że to błąd systemu, a nie moja wina), coś dziwnego stało się z plikami nagłówkowymi, które w poprzednich commitach wyglądały "Jak Bóg przykazał", a przy ostatnim (5 commicie) zaszyfrowały się do postaci binarnej. Nie mam pojęcia dlaczego, bo nic przy nich nie ruszałem. Proszę o sprawdzenie tych plików w takim kształcie, jaki miały na początku. 
+
 	Commit 1: Inicjalizacja repo
 		Do nowopowstałego repo dodano wszystkie pliki źródłowe i nagłówkowe, a więc: main.c, area.c, volume.c, area.h, volume.h. Ponadto utworzono i dodano do repo niniejszy plik README.md.
 	
