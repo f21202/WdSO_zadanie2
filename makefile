@@ -1,32 +1,28 @@
-.PHONY: all
-.SUFFIXES: .c .o .h .a
+.PHONY: all remove
+.SUFFIXES:
 
-all:
-	Code2
-	remove
-
-.o:
-	gcc -o $@ $^
-
-.c.o:
+%.o: %.c *.h *.h
 	gcc -c $<
 
+%.o: %.c
+	gcc -c -fPIC $<
 
-Code2: main.o libarea.a libvolume.so
+lib%.a: %.o
+	ar -rs $@ $<
+
+lib%.so: %.o
+	gcc -shared -o $@ $<
+
+%: *.o *.a *.so
 	gcc -o $@ $^
 
+all: Code2 remove
+Code2: main.o libarea.a libvolume.so
 main.o: main.c area.h volume.h
-
 area.o: area.c
-
-libarea.a: area.o
-	ar rs $@ $^
-
 volume.o: volume.c
-	gcc -fPIC -c $^
-	
+libarea.a: area.o
 libvolume.so: volume.o
-	gcc -shared -o $@ $^
 
-remove: main.o area.o volume.o 
-	rm $^
+remove: 
+	rm *.o

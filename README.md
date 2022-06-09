@@ -23,5 +23,7 @@ UWAGA: Po skompilowaniu programu według stanu ze wszystkich commitów, z uwagi 
 			$* - zwraca nazwę pliku - celu, jednak pozbawioną rozszerzenia (tzn. jeżeli cel nazywa się main.o, to $* zwróci "main")
 			
 	Commit 4: Reguły przyrostków
-		Istniejący makefile rozbudowano o dwie reguły przyrostków: pierwsza, .o, ma za zadanie kompilowanie programu z plików obiektowych. Druga, .c.o tworzy pliki obiektowe wprost z kodu źródłowego. Regłu przyrostków mają swoje wady, głównie - są one mało precyzyjne. W związku z tym w piątym commicie uzupełniono plik makefile o reguły wzorców.
+		Istniejący makefile rozbudowano o dwie reguły przyrostków: pierwsza, .o, ma za zadanie kompilowanie programu z plików obiektowych. Druga, .c.o tworzy pliki obiektowe wprost z kodu źródłowego. Regłu przyrostków mają swoje wady. W związku z tym w piątym commicie uzupełniono plik makefile o reguły wzorców.
 		
+	Commit 5: Reguły wzorca
+		Makefile z poprzedniego zadania przepisano tak, by w całości opierał się na regułach wzorca. Zdefiniowano cele PHONY: all i remove. all w założeniu kompiluje program i usuwa zbędne pliki .o za pomocą celu remove. Ponadto napisano dwa cele, które tworzą z plików kodu źródłowego pliki obiektowe - %.o: %.c, przy czym jeden z nich wymaga obu plików nagłówkowych (volume.h oraz area.h). Następnie napisano regułę, która z pliku obiektowego tworzy bibliotekę statyczną (ar -rs). Kolejna reguła tworzy z pliku obiektowego bibliotekę dynamiczną (gcc -shared -o). Następna kompiluje cały program, a więc wymaga pliku main.o i obu bibliotek. Poniżej wywoływano poszczególne reguły. Warto jeszcze zwrócić uwagę na fałszywy cel remove u dołu pliku makefile, którego zadaniem jest usunięcie plików obiektowych, które po kompilacji nie są już do niczego potrzebne.
